@@ -9,9 +9,5 @@ namespace YosBookShop.Pages.Shared
         {
         }
 
-        public void OnPost()
-        {
-
-        }
     }
 }
