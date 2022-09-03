@@ -10,16 +10,16 @@ namespace YosBookShop.Pages.bookType
         private readonly ApplicationDbContext _db;
 
         [BindProperty]
-        public BookType? BookType { get; set; }
+        public BookType BookType { get; set; }
 
 
         public EditModel(ApplicationDbContext db)
         {
             _db = db;
         }
-        public void OnGet(int id)
+        public void OnGet(int Id)
         {
-            BookType = _db.BookTypes.Find(id);
+            BookType = _db.BookTypes.Find(Id);
             
         }
 
