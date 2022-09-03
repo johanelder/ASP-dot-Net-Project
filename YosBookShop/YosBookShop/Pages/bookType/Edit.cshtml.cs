@@ -31,7 +31,7 @@ namespace YosBookShop.Pages.bookType
                 _db.BookTypes.Update(BookType);
                 _db.SaveChanges();
 
-                TempData["success"] = "Book type updated successfully";
+                TempData["updated"] = "Book type updated successfully";
 
                 return RedirectToPage("Index");
 

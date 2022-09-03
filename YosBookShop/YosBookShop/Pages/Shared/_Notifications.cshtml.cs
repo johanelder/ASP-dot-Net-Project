@@ -8,5 +8,10 @@ namespace YosBookShop.Pages.Shared
         public void OnGet()
         {
         }
+
+        public void OnPost()
+        {
+
+        }
     }
 }
