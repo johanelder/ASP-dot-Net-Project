@@ -26,7 +26,7 @@
             <input asp-for="@Model.Book.PageCount" class="form-control"/>
             <span asp-validation-for="@Model.Book.PageCount" class="text-danger"></span>
         </div>
-        <div class="dropdown">
+        @*<div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                 Dropdown Example
                 <span class="caret"></span>
@@ -37,8 +37,17 @@
                     <li><a href="#" data-value="@obj.Name">@obj.Name</a></li>
                 }
             </ul>
-        </div>
-      
+        </div>*@
+        @*<select class="form-select" aria-label="Default select example">
+            <option selected>Select Book Type</option>
+            <option value="Hardcover">HardCover</option>
+            <option value="Paperback">Paperback</option>
+            <option value="Pocketbook">Pocketbook</option>
+            <option value="eBook">eBook</option>
+            <option value="Audio Book">Audio Book</option>
+        </select>*@
+        @*Trying to figure out how to get the list populated from the table 'BookType'... or 
+        just get the values of a select list to get added into the db*@
         <button type="submit" class="btn btn-primary" style="width:150px">Add</button>
         <a asp-page="Index" class="btn btn-secondary" style="width: 120px">Back to List</a>
     </div>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YosBookShop.Data;
 
@@ -11,9 +12,10 @@ using YosBookShop.Data;
 namespace YosBookShop.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220904011913_userOrderTables")]
+    partial class userOrderTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,6 +39,9 @@ namespace YosBookShop.Migrations
                     b.Property<int?>("BookTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
                     b.Property<int>("PageCount")
                         .HasColumnType("int");
 
@@ -47,6 +52,8 @@ namespace YosBookShop.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BookTypeId");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("Books");
                 });
@@ -98,7 +105,12 @@ namespace YosBookShop.Migrations
                     b.Property<DateTime>("ShippedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -141,7 +153,32 @@ namespace YosBookShop.Migrations
                         .WithMany()
                         .HasForeignKey("BookTypeId");
 
+                    b.HasOne("YosBookShop.Model.Order", null)
+                        .WithMany("Books")
+                        .HasForeignKey("OrderId");
+
                     b.Navigation("BookType");
+                });
+
+            modelBuilder.Entity("YosBookShop.Model.Order", b =>
+                {
+                    b.HasOne("YosBookShop.Model.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("YosBookShop.Model.Order", b =>
+                {
+                    b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("YosBookShop.Model.User", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

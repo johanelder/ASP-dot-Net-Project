@@ -13,9 +13,9 @@ namespace YosBookShop.Pages.book
             [BindProperty]
             public Book Book { get; set; }
 
-            public IEnumerator<BookType> BookType { get; set; }
+            //public IEnumerator<BookType> BookType { get; set; }
 
-            public List<BookType> BookTypes { get; set; }
+            //public List<BookType> BookTypes { get; set; }
 
             public CreateModel(ApplicationDbContext db)
             {
@@ -35,7 +35,7 @@ namespace YosBookShop.Pages.book
                     _db.Books.Add(Book);
                     _db.SaveChanges();
 
-                    TempData["success"] = "Book Type created successfully";
+                    TempData["success"] = "Book created successfully";
 
                     return RedirectToPage("Index");
                 }

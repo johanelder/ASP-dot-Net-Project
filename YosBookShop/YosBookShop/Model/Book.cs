@@ -17,8 +17,9 @@ namespace YosBookShop.Model
         [Required]
         public int PageCount { get; set; }
 
-        [AllowNull]
-        public BookType BookType { get; set; }
+        //[AllowNull]
+        //public BookType? BookType { get; set; }
+        public virtual BookType? BookType { get; set; }
 
     }
 }
