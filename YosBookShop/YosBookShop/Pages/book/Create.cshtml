@@ -1,0 +1,51 @@
+﻿@page
+@using YosBookShop.Model
+@model YosBookShop.Pages.book.CreateModel
+@{
+}
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Add New Book</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="@Model.Book.Title" class="form-control">Title</label>
+            <input asp-for="@Model.Book.Title" class="form-control"/>
+            <span asp-validation-for="@Model.Book.Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Book.Author" class="form-control">Author</label>
+            <input asp-for="@Model.Book.Author" class="form-control"/>
+            <span asp-validation-for="@Model.Book.Author" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Book.PageCount" class="form-control">Pages</label>
+            <input asp-for="@Model.Book.PageCount" class="form-control"/>
+            <span asp-validation-for="@Model.Book.PageCount" class="text-danger"></span>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Dropdown Example
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                @foreach (var obj in @Model.BookTypes)
+                {
+                    <li><a href="#" data-value="@obj.Name">@obj.Name</a></li>
+                }
+            </ul>
+        </div>
+      
+        <button type="submit" class="btn btn-primary" style="width:150px">Add</button>
+        <a asp-page="Index" class="btn btn-secondary" style="width: 120px">Back to List</a>
+    </div>
+</form>
+            
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
