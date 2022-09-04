@@ -4,10 +4,11 @@
 }
 
 <form method="post">
+    <input hidden asp-for="@Model.User.Id" />
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">Delete User</h2>
-            <hr />
+            <hr/>
         </div>
         <div asp-validation-summary="All"></div>
         <div class="mb-3">
@@ -35,7 +36,7 @@
             <input asp-for="@Model.User.CreatedOn" class="form-control"/>
             <span asp-validation-for="@Model.User.CreatedOn" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">Delete</button>
+        <button type="submit" class="btn btn-primary" style="width: 150px">Delete</button>
         <a asp-page="Index" class="btn btn-secondary" style="width: 120px">Back to List</a>
     </div>
 </form>
